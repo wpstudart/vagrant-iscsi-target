@@ -5,15 +5,15 @@
 
 if [ ! -e /dev/sdb1 ]; then
     # Create a label
-    sudo parted /dev/sdb --script -- mklabel msdos
+    /sbin/parted /dev/sdb --script -- mklabel msdos
     # create partition (it takes the whole disk)
-    sudo parted /dev/sdb --script -- mkpart primary 0 -1
+    /sbin/parted /dev/sdb --script -- mkpart primary 0 -1
     # set type lvm
-    sudo parted /dev/sdb --script -- set 1 lvm on
-    sudo parted /dev/sdb --script print
+    /sbin/parted /dev/sdb --script -- set 1 lvm on
+    /sbin/parted /dev/sdb --script print
 
     # Create logical volume
-    sudo pvcreate /dev/sdb1
-    sudo vgcreate storage_vg /dev/sdb1
-    sudo lvcreate -l 100%FREE -n storage_lv storage_vg
+    /sbin/pvcreate /dev/sdb1
+    /sbin/vgcreate storage_vg /dev/sdb1
+    /sbin/lvcreate -l 100%FREE -n storage_lv storage_vg
 fi
