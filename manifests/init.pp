@@ -1,4 +1,3 @@
-# Remove veewee files
 file {
     "/EMPTY": ensure => absent, backup => false;
     "/etc/tgt/targets.conf": ensure => present, source => "/vagrant/conf/targets.conf", 
