@@ -1,7 +1,7 @@
 # Remove veewee files
 file {
     "/EMPTY": ensure => absent, backup => false;
-    "/etc/tgt/targets.conf": ensure => present, source => "/vagrant/targets.conf", 
+    "/etc/tgt/targets.conf": ensure => present, source => "/vagrant/conf/targets.conf", 
                              owner => "root", group => "root", mode => "0600",
                              backup => true;
 }
@@ -12,7 +12,7 @@ package {
 }
 
 exec {
-    "create-partition": command => "create_partition.sh", path => "/vagrant";
+    "create-partition": command => "create_partition.sh", path => "/vagrant/scripts";
 }
 
 service {
