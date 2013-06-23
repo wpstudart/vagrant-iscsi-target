@@ -18,4 +18,4 @@ service {
     "tgtd": ensure => "running";
 }
 
-File<| |> -> Package <| |> -> Exec["create-partition"] -> Service["tgtd"]
+Package <| |> -> File <| |> -> Exec["create-partition"] -> Service["tgtd"]
