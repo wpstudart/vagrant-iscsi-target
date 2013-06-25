@@ -41,21 +41,20 @@ $ vagrant up
 ### iSCSI Initiator
 To connect a client (an *initiator*) to a iSCSI target:
 
-1. The following packages need to be installed:
-
+* The following packages need to be installed:
   - RedHat/CentOS/Suse: iscsi-initiator-utils 
   - Ubuntu/Debian: open-iscsi
 
-2. Make sure that the `iscsi` service is running.
+* Make sure that the `iscsi` service is running.
 
-3. Before using a target you must discover it:
+* Before using a target you must discover it:
 
 ```
    $ iscsiadm -m discovery -t sendtargets -p 192.168.56.10
    192.168.56.10:3260,1 iqn.2013-06.lan.iscsi-storage:storage
 ```
 
-4. Log in to the new iSCSI target:
+* Log in to the new iSCSI target:
 
 ```
    $ iscsiadm -m node -T iqn.2013-06.lan.iscsi-storage:storage -p 192.168.56.10 -l
@@ -63,7 +62,7 @@ To connect a client (an *initiator*) to a iSCSI target:
    Login to [iface: default, target: iqn.2013-06.lan.iscsi-storage:storage, portal: 192.168.56.10,3260] successful.
 ```
 
-5. To see the known targets run:
+* To see the known targets run:
 
 ```
    $ sudo iscsiadm -m node
