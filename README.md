@@ -16,6 +16,7 @@ Details of the virtual machine that will be installed after running `vagrant up`
     + Storage disk: 10GB (used as iSCSI backing storage).
 - Private IP: 192.168.56.10
 - LUN info:
+
 ```
 LUN: 1
     Type: disk
@@ -44,17 +45,22 @@ To connect a client (an *initiator*) to a iSCSI target:
 - Ubuntu/Debian: open-iscsi
 2. Make sure that the `iscsi` service is running.
 3. Before using a target you must discover it:
+
 ```
    $ iscsiadm -m discovery -t sendtargets -p 192.168.56.10
    192.168.56.10:3260,1 iqn.2013-06.lan.iscsi-storage:storage
 ```
+
 4. Log in to the new iSCSI target:
+
 ```
    $ iscsiadm -m node -T iqn.2013-06.lan.iscsi-storage:storage -p 192.168.56.10 -l
    Logging in to [iface: default, target: iqn.2013-06.lan.iscsi-storage:storage, portal: 192.168.56.10,3260] (multiple)
    Login to [iface: default, target: iqn.2013-06.lan.iscsi-storage:storage, portal: 192.168.56.10,3260] successful.
 ```
+
 5. To see the known targets run:
+
 ```
    $ sudo iscsiadm -m node
    192.168.56.10:3260,1 iqn.2013-06.lan.iscsi-storage:storage
