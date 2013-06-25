@@ -40,10 +40,14 @@ $ vagrant up
 ```
 ### iSCSI Initiator
 To connect a client (an *initiator*) to a iSCSI target:
+
 1. The following packages need to be installed:
-- RedHat/CentOS/Suse: iscsi-initiator-utils 
-- Ubuntu/Debian: open-iscsi
+
+  - RedHat/CentOS/Suse: iscsi-initiator-utils 
+  - Ubuntu/Debian: open-iscsi
+
 2. Make sure that the `iscsi` service is running.
+
 3. Before using a target you must discover it:
 
 ```
