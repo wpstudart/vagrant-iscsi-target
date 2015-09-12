@@ -18,4 +18,8 @@ service {
     "tgtd": ensure => "running";
 }
 
-Package <| |> -> File <| |> -> Exec["create-partition"] -> Service["tgtd"]
+service {
+    "iptables": ensure => "stopped";
+}
+
+Package <| |> -> File <| |> -> Exec["create-partition"] -> Service["iptables"] -> Service["tgtd"]
